@@ -637,6 +637,11 @@ bool Player::Create(ObjectGuid::LowType guidlow, WorldPackets::Character::Charac
     uint64 money = sWorld->getIntConfig(CONFIG_START_PLAYER_MONEY) * 10000;
 
     WorldLocation loc(info->mapId, info->positionX, info->positionY, info->positionZ, info->orientation);
+    uint32 startTeam = TeamForRace(createInfo->Race);
+    if (startTeam == ALLIANCE)
+        loc = WorldLocation(0, -8833.38f, 628.628f, 94.0066f, 0.0f); // Stormwind
+    else if (startTeam == HORDE)
+        loc = WorldLocation(1, 1569.59f, -4396.0f, 16.0f, 0.0f); // Orgrimmar
 
     bool loadoutItem = false;
     bool addArtifact = true;
