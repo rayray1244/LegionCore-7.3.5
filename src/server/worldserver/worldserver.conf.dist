@@ -736,6 +736,28 @@ CharacterCreating.MinLevelForDemonHunter = 0
 Hardcore.MenuSpellId = 0
 
 #
+#    DailyVow.MenuSpellId
+#        Description: Spell ID of the ability used to open the daily vow menu.
+#                     New characters learn this spell on creation if set.
+#        Default:     0 - (Disabled)
+
+DailyVow.MenuSpellId = 0
+
+#
+#    DailyVow.RewardSpellId
+#        Description: Optional spell cast on the player for completing a daily vow.
+#        Default:     0 - (Disabled)
+
+DailyVow.RewardSpellId = 0
+
+#
+#    DailyVow.RewardGold
+#        Description: Gold reward (in copper) for completing a daily vow.
+#        Default:     0 - (Disabled)
+
+DailyVow.RewardGold = 0
+
+#
 #    SkipCinematics
 #        Description: Disable cinematic intro at first login after character creation.
 #                     Prevents buggy intros in case of custom start location coordinates.

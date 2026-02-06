@@ -852,6 +852,14 @@ bool Player::Create(ObjectGuid::LowType guidlow, WorldPackets::Character::Charac
             TC_LOG_ERROR(LOG_FILTER_PLAYER, "Player::Create: Hardcore.MenuSpellId (%u) is not a valid spell, skipping.", hardcoreSpellId);
     }
 
+    if (uint32 dailyVowSpellId = sWorld->getIntConfig(CONFIG_DAILY_VOW_MENU_SPELL_ID))
+    {
+        if (sSpellMgr->GetSpellInfo(dailyVowSpellId))
+            learnSpell(dailyVowSpellId, false);
+        else
+            TC_LOG_ERROR(LOG_FILTER_PLAYER, "Player::Create: DailyVow.MenuSpellId (%u) is not a valid spell, skipping.", dailyVowSpellId);
+    }
+
     // enable basic auras. ToDo: find the way to do it not by hack.
     switch(getClass())
     {

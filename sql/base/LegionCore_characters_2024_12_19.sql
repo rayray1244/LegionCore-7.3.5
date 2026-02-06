@@ -1236,6 +1236,33 @@ LOCK TABLES `character_custom_event_reapeter` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `character_daily_vow`
+--
+
+DROP TABLE IF EXISTS `character_daily_vow`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `character_daily_vow` (
+  `guid` bigint NOT NULL,
+  `date` int unsigned NOT NULL DEFAULT '0',
+  `vow_id` tinyint unsigned NOT NULL DEFAULT '0',
+  `progress` int unsigned NOT NULL DEFAULT '0',
+  `completed` tinyint unsigned NOT NULL DEFAULT '0',
+  `failed` tinyint unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`guid`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=COMPACT;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `character_daily_vow`
+--
+
+LOCK TABLES `character_daily_vow` WRITE;
+/*!40000 ALTER TABLE `character_daily_vow` DISABLE KEYS */;
+/*!40000 ALTER TABLE `character_daily_vow` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `character_deathmatch`
 --
 
