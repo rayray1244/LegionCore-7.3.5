@@ -728,6 +728,14 @@ DemonHuntersPerRealm = 12
 CharacterCreating.MinLevelForDemonHunter = 0
 
 #
+#    Hardcore.MenuSpellId
+#        Description: Spell ID of the ability used to open the hardcore menu.
+#                     New characters learn this spell on creation if set.
+#        Default:     0 - (Disabled)
+
+Hardcore.MenuSpellId = 0
+
+#
 #    SkipCinematics
 #        Description: Disable cinematic intro at first login after character creation.
 #                     Prevents buggy intros in case of custom start location coordinates.

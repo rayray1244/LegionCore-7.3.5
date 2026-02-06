@@ -844,6 +844,14 @@ bool Player::Create(ObjectGuid::LowType guidlow, WorldPackets::Character::Charac
     
     LearnDefaultSpells();
 
+    if (uint32 hardcoreSpellId = sWorld->getIntConfig(CONFIG_HARDCORE_MENU_SPELL_ID))
+    {
+        if (sSpellMgr->GetSpellInfo(hardcoreSpellId))
+            learnSpell(hardcoreSpellId, false);
+        else
+            TC_LOG_ERROR(LOG_FILTER_PLAYER, "Player::Create: Hardcore.MenuSpellId (%u) is not a valid spell, skipping.", hardcoreSpellId);
+    }
+
     // enable basic auras. ToDo: find the way to do it not by hack.
     switch(getClass())
     {

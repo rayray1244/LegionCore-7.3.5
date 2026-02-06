@@ -40,6 +40,7 @@ void AddSC_player_special_scripts();
 void AddSC_fireworks_spectacular();
 void AddSC_custom_events();
 void AddSC_scene_scripts();
+void AddSC_hardcore_challenge();
 
 void AddSC_petbattle_abilities();
 void AddSC_PetBattlePlayerScript();
@@ -71,6 +72,7 @@ void AddWorldScripts()
     AddSC_fireworks_spectacular();
     AddSC_custom_events();
     AddSC_scene_scripts();
+    AddSC_hardcore_challenge();
 
     AddSC_petbattle_abilities();
     AddSC_PetBattlePlayerScript();
