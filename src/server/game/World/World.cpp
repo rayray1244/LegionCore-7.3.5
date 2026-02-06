@@ -1535,7 +1535,7 @@ void World::LoadConfigSettings(bool reload)
         m_int_configs[CONFIG_MAX_ITEM_LEVEL] = sConfigMgr->GetIntDefault("Max.ItemLevel", 925);
 
         m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_CAP]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Cap", 25);
-        m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_START]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Start", 0);
+        m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_START]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Start", 15);
     }
     else if (m_int_configs[CONFIG_LEGION_ENABLED_PATCH] == 2)
     {
@@ -1549,7 +1549,7 @@ void World::LoadConfigSettings(bool reload)
         m_int_configs[CONFIG_MAX_ITEM_LEVEL] = sConfigMgr->GetIntDefault("Max.ItemLevel", 955);
 
         m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_CAP]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Cap", 40);
-        m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_START]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Start", 25);
+        m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_START]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Start", 15);
     }
     else
     {
@@ -1563,7 +1563,7 @@ void World::LoadConfigSettings(bool reload)
         m_int_configs[CONFIG_MAX_ITEM_LEVEL] = sConfigMgr->GetIntDefault("Max.ItemLevel", 985);
 
         m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_CAP]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Cap", 55);
-        m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_START]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Start", 40);
+        m_int_configs[CONFIG_ARTIFACT_KNOWLEDGE_START]  = sConfigMgr->GetIntDefault("Artifact.Knowledge.Start", 15);
     }
 
     sAnticheatMgr->LoadConfig();
