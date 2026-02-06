@@ -22123,6 +22123,12 @@ void Unit::Kill(Unit* victim, bool durabilityLoss, SpellInfo const* spellProto)
         // at original death (not at SpiritOfRedemtionTalent timeout)
         plrVictim->SetPvpDeath(player != nullptr);
 
+        if (plrVictim->IsHardcore() && !plrVictim->IsHardcoreDead())
+        {
+            plrVictim->SetHardcoreDead(true);
+            plrVictim->SaveToDB();
+        }
+
         // only if not player and not controlled by player pet. And not at BG
         if ((durabilityLoss && !player && !victim->ToPlayer()->InBattleground()) || (player && sWorld->getBoolConfig(CONFIG_DURABILITY_LOSS_IN_PVP)))
         {
@@ -28131,4 +28137,3 @@ bool Unit::IsUnitMeetCondition(uint32 visualId, SpellInfo const* spellInfo/*= nu
     }
     return true;
 }
-

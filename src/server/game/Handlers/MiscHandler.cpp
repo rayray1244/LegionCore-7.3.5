@@ -32,6 +32,8 @@
 #include "ScriptMgr.h"
 #include "Warden.h"
 #include "ArtifactPackets.h"
+#include "Hardcore/HardcoreChallenge.h"
+#include "DailyVow/DailyVow.h"
 
 void WorldSession::HandleRepopRequest(WorldPackets::Misc::RepopRequest& /*packet*/)
 {
@@ -648,6 +650,12 @@ void WorldSession::HandleRequestResearchHistory(WorldPackets::Misc::RequestResea
 
 void WorldSession::HandleChoiceResponse(WorldPackets::Misc::ChoiceResponse& packet)
 {
+    if (DailyVow::HandleChoiceResponse(_player, packet.ChoiceID, packet.ResponseID))
+        return;
+
+    if (HardcoreChallenge::HandleChoiceResponse(_player, packet.ChoiceID, packet.ResponseID))
+        return;
+
     auto playerChoice = sObjectMgr->GetPlayerChoice(packet.ChoiceID);
     if (!playerChoice)
         return;

@@ -637,6 +637,11 @@ bool Player::Create(ObjectGuid::LowType guidlow, WorldPackets::Character::Charac
     uint64 money = sWorld->getIntConfig(CONFIG_START_PLAYER_MONEY) * 10000;
 
     WorldLocation loc(info->mapId, info->positionX, info->positionY, info->positionZ, info->orientation);
+    uint32 startTeam = TeamForRace(createInfo->Race);
+    if (startTeam == ALLIANCE)
+        loc = WorldLocation(0, -8833.38f, 628.628f, 94.0066f, 0.0f); // Stormwind
+    else if (startTeam == HORDE)
+        loc = WorldLocation(1, 1569.59f, -4396.0f, 16.0f, 0.0f); // Orgrimmar
 
     bool loadoutItem = false;
     bool addArtifact = true;
@@ -838,6 +843,22 @@ bool Player::Create(ObjectGuid::LowType guidlow, WorldPackets::Character::Charac
     LearnDefaultSkills();
     
     LearnDefaultSpells();
+
+    if (uint32 hardcoreSpellId = sWorld->getIntConfig(CONFIG_HARDCORE_MENU_SPELL_ID))
+    {
+        if (sSpellMgr->GetSpellInfo(hardcoreSpellId))
+            learnSpell(hardcoreSpellId, false);
+        else
+            TC_LOG_ERROR(LOG_FILTER_PLAYER, "Player::Create: Hardcore.MenuSpellId (%u) is not a valid spell, skipping.", hardcoreSpellId);
+    }
+
+    if (uint32 dailyVowSpellId = sWorld->getIntConfig(CONFIG_DAILY_VOW_MENU_SPELL_ID))
+    {
+        if (sSpellMgr->GetSpellInfo(dailyVowSpellId))
+            learnSpell(dailyVowSpellId, false);
+        else
+            TC_LOG_ERROR(LOG_FILTER_PLAYER, "Player::Create: DailyVow.MenuSpellId (%u) is not a valid spell, skipping.", dailyVowSpellId);
+    }
 
     // enable basic auras. ToDo: find the way to do it not by hack.
     switch(getClass())

@@ -570,7 +570,9 @@ enum PlayerExtraFlags
     PLAYER_EXTRA_INVISIBLE_STATUS   = 0x0040,
 
     // other states
-    PLAYER_EXTRA_PVP_DEATH          = 0x0100                // store PvP death status until corpse creating.
+    PLAYER_EXTRA_PVP_DEATH          = 0x0100,               // store PvP death status until corpse creating.
+    PLAYER_EXTRA_HARDCORE           = 0x0200,
+    PLAYER_EXTRA_HARDCORE_DEAD      = 0x0400
 };
 
 enum AtLoginFlags : uint16
@@ -1557,6 +1559,10 @@ class Player : public Unit, public GridObject<Player>
         bool isGMVisible() const { return !(m_ExtraFlags & PLAYER_EXTRA_GM_INVISIBLE); }
         void SetGMVisible(bool on);
         void SetPvpDeath(bool on) { if (on) m_ExtraFlags |= PLAYER_EXTRA_PVP_DEATH; else m_ExtraFlags &= ~PLAYER_EXTRA_PVP_DEATH; }
+        bool IsHardcore() const { return (m_ExtraFlags & PLAYER_EXTRA_HARDCORE) != 0; }
+        void SetHardcore(bool on) { if (on) m_ExtraFlags |= PLAYER_EXTRA_HARDCORE; else m_ExtraFlags &= ~PLAYER_EXTRA_HARDCORE; }
+        bool IsHardcoreDead() const { return (m_ExtraFlags & PLAYER_EXTRA_HARDCORE_DEAD) != 0; }
+        void SetHardcoreDead(bool on) { if (on) m_ExtraFlags |= PLAYER_EXTRA_HARDCORE_DEAD; else m_ExtraFlags &= ~PLAYER_EXTRA_HARDCORE_DEAD; }
         bool HasPlayerExtraFlag(uint32 flag);
         void SetPlayerExtraFlag(uint32 flag, bool addFlag = true);
         bool InvisibleStatusRatingRequirements();

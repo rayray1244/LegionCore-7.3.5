@@ -583,6 +583,16 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
         return;
     }
 
+    if (pCurrChar->IsHardcoreDead())
+    {
+        SendNotification("Этот персонаж погиб в режиме хардкор. Вход заблокирован.");
+        delete pCurrChar;
+        delete holder;
+        m_playerLoading.Clear();
+        KickPlayer();
+        return;
+    }
+
     SendTutorialsData();
 
     sWorld->UpdateCharacterAccount(playerGuid.GetGUIDLow(), GetAccountId());
